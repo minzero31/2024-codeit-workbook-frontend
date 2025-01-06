@@ -9,13 +9,13 @@ function App() {
   const isAuthenticated = mockAuthService.isAuthenticated();
 
   return (
-    <div className="min-h-screen bg-[#7096D1]">
+    <div className="min-h-screen">
       <Router>
         <Routes>
           {/* 기본 경로 처리 */}
           <Route 
             path="/" 
-            element={isAuthenticated ? <Navigate to="/dashboard" /> : <Navigate to="/login" />} 
+            element={isAuthenticated ? <Navigate to="/main" /> : <Navigate to="/login" />} 
           />
           
           {/* 인증 페이지 */}

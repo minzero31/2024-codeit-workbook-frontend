@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 const LoginForm = ({ onSubmit }) => {
   const [formData, setFormData] = useState({
-    email: '',
+    studentId: '',
     password: ''
   });
   const [loading, setLoading] = useState(false);
@@ -54,18 +54,21 @@ const LoginForm = ({ onSubmit }) => {
 
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
-          <label htmlFor="email" className="block text-sm font-medium text-gray-700">
-            이메일
+          <label htmlFor="studentId" className="block text-sm font-medium text-gray-700">
+            학번
           </label>
           <input
-            type="email"
-            id="email"
-            name="email"
-            value={formData.email}
+            type="text"
+            id="studentId"
+            name="studentId"
+            value={formData.studentId}
             onChange={handleChange}
             className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
             required
             disabled={loading}
+            pattern="[0-9]*"  // 숫자만 입력 가능
+            maxLength="10"    // 최대 10자리
+            placeholder="학번을 입력하세요"
           />
         </div>
 
