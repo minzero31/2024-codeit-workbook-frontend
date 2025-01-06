@@ -3,7 +3,7 @@ import { useState } from 'react';
 
 const SignupForm = ({ onSubmit }) => {
   const [formData, setFormData] = useState({
-    email: '',
+    studentId: '',
     password: '',
     passwordConfirm: '',
     name: ''
@@ -29,16 +29,17 @@ const SignupForm = ({ onSubmit }) => {
   return (
     <form onSubmit={handleSubmit} className="space-y-4 w-full max-w-2xl">
       <div>
-        <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+        <label htmlFor="studentId" className="block text-sm font-medium text-gray-700">
           이메일
         </label>
         <input
-          type="email"
-          id="email"
-          name="email"
-          value={formData.email}
+          type="text"
+          id="studentId"
+          name="studentId"
+          value={formData.studentId}
           onChange={handleChange}
           className="mt-1 block w-full rounded-md border border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2"
+          placeholder="학번을 입력하세요"
           required
         />
       </div>
