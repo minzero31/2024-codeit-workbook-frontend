@@ -10,8 +10,12 @@ const LoginPage = () => {
 
   const handleLogin = async (credentials) => {
     try {
-      await mockAuthService.login(credentials);
-      navigate('/main');
+      const response = await mockAuthService.login(credentials);
+      if (response && response.token) {
+        // 로그인 성공 후 추가 처리
+        localStorage.setItem('isAuthenticated', 'true');
+        navigate('/main');
+      }
     } catch (error) {
       setError(error.message);
     }

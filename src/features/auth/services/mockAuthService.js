@@ -1,6 +1,6 @@
 let mockUsers = [
   {
-    studentId: '2314513',  // email을 studentId로 변경
+    studentId: '2314513', 
     password: 'password123',
     name: 'testUser'
   }
