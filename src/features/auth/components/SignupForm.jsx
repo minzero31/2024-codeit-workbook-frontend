@@ -30,7 +30,7 @@ const SignupForm = ({ onSubmit }) => {
     <form onSubmit={handleSubmit} className="space-y-4 w-full max-w-2xl">
       <div>
         <label htmlFor="studentId" className="block text-sm font-medium text-gray-700">
-          이메일
+          학번
         </label>
         <input
           type="text"
