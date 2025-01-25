@@ -5,6 +5,8 @@ import LoginPage from './pages/Auth/LoginPage';
 import SignupPage from './pages/Auth/SignupPage';
 import MainPage from './features/main/pages/MainPage';
 import { mockAuthService } from './features/auth/services/mockAuthService';
+import CreatorQuizPage from './pages/Quiz/CreatorQuizPage';
+import QuizSolvePage from './pages/Quiz/CreatorQuizPage';
 
 // 보호된 라우트 컴포넌트
 const ProtectedRoute = ({ children }) => {
@@ -75,6 +77,29 @@ function App() {
 
         {/* 알 수 없는 경로 처리 */}
         <Route path="*" element={<Navigate to="/" replace />} />
+
+        <Route
+        path="/creator-quiz/:quizId"
+        element={isAuthenticated ? <CreatorQuizPage /> : <Navigate to="/login" />}
+        />
+        
+        {/* Quiz */}
+        <Route
+          path="/quiz/solve"
+          element={
+            <ProtectedRoute>
+              <QuizSolvePage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/quiz/create"
+          element={
+            <ProtectedRoute>
+              <CreatorQuizPage />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
     </Router>
   );

@@ -1,5 +1,6 @@
 import { useState, useCallback } from 'react';
 import { useDropzone } from 'react-dropzone';
+import { useNavigate } from 'react-router-dom';
 import Navigation from '../../../components/Layout/Navigation';
 
 const MAX_FILE_SIZE = 50 * 1024 * 1024;
@@ -24,6 +25,7 @@ const LECTURE_DATA = [
 ];
 
 const MainPage = () => {
+  const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [files, setFiles] = useState([]);
   const [selectedSubject, setSelectedSubject] = useState('');
@@ -48,7 +50,6 @@ const MainPage = () => {
     }
   ]);
 
-  // ... 기존 함수들은 모두 동일하게 유지 ...
   const onDrop = useCallback((acceptedFiles, rejectedFiles) => {
     if (rejectedFiles.length > 0) {
       rejectedFiles.forEach(file => {
@@ -102,6 +103,7 @@ const MainPage = () => {
     setFiles([]);
     setSelectedSubject('');
     setSelectedProfessor('');
+    navigate('/quiz/solve');
   };
 
   return (
