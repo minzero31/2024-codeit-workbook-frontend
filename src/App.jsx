@@ -6,7 +6,7 @@ import SignupPage from './pages/Auth/SignupPage';
 import MainPage from './features/main/pages/MainPage';
 import { mockAuthService } from './features/auth/services/mockAuthService';
 import CreatorQuizPage from './pages/Quiz/CreatorQuizPage';
-import QuizSolvePage from './pages/Quiz/CreatorQuizPage';
+import QuizSolvePage from './pages/Quiz/QuizSolvePage.jsx';
 
 // 보호된 라우트 컴포넌트
 const ProtectedRoute = ({ children }) => {
