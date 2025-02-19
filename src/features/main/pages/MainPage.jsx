@@ -8,6 +8,14 @@ const MainPage = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showSearch, setShowSearch] = useState(false);
 
+  const handleSearch = (searchTerm) => {
+    navigate(`/search?q=${encodeURIComponent(searchTerm)}`);
+  };
+
+  const handleMenuClick = () => {
+    setIsMenuOpen(true);
+  };
+
   return (
     <div className="min-h-screen bg-gray-100">
       {/* 헤더 */}
@@ -21,7 +29,11 @@ const MainPage = () => {
               }`}>
                 {showSearch && (
                   <div className="w-full">
-                    <SearchBar className="w-full" />
+                    <SearchBar 
+                      className="w-full" 
+                      onSearch={handleSearch}
+                      onMenuClick={handleMenuClick}
+                    />
                   </div>
                 )}
                 <button

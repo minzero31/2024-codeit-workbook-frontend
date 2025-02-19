@@ -1,8 +1,11 @@
 // src/components/Layout/Navigation.jsx
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { useNavigate } from 'react-router-dom';
 
 const Navigation = ({ isOpen, onClose }) => {
+  const navigate = useNavigate();
+
   // ESC 키로 메뉴 닫기
   useEffect(() => {
     const handleEsc = (e) => {
@@ -11,6 +14,12 @@ const Navigation = ({ isOpen, onClose }) => {
     window.addEventListener('keydown', handleEsc);
     return () => window.removeEventListener('keydown', handleEsc);
   }, [onClose]);
+
+  // 네비게이션 핸들러 추가
+  const handleNavigation = (path) => {
+    navigate(path);
+    onClose();
+  };
 
   return (
     <>
@@ -41,9 +50,24 @@ const Navigation = ({ isOpen, onClose }) => {
           
           {/* 메뉴 항목들 */}
           <nav className="space-y-4">
-            <a href="#" className="block p-2 hover:bg-gray-100 rounded">홈</a>
-            <a href="#" className="block p-2 hover:bg-gray-100 rounded">프로필</a>
-            <a href="#" className="block p-2 hover:bg-gray-100 rounded">설정</a>
+            <button 
+              onClick={() => handleNavigation('/main')} 
+              className="block w-full text-left p-2 hover:bg-gray-100 rounded"
+            >
+              홈
+            </button>
+            <button 
+              onClick={() => handleNavigation('/mypage')} 
+              className="block w-full text-left p-2 hover:bg-gray-100 rounded"
+            >
+              프로필
+            </button>
+            <button 
+              onClick={() => handleNavigation('/settings')} 
+              className="block w-full text-left p-2 hover:bg-gray-100 rounded"
+            >
+              설정
+            </button>
           </nav>
         </div>
       </div>
